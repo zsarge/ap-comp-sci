@@ -60,7 +60,12 @@ class FizzBuzz {
 		System.out.println("\n");
 		System.out.println("Method 2:");
 		for (int i = 1; i < limit; i++)
-			System.out.print(fizzBuzz(i) + (i < limit - 1 ? ", " : ""));
+			System.out.print(fizzBuzz2(i) + (i < limit - 1 ? ", " : ""));
+
+		System.out.println("\n");
+		System.out.println("Method 3:");
+		for (int i = 1; i < limit; i++)
+			System.out.print(fizzBuzz3(i) + (i < limit - 1 ? ", " : ""));
 
 		System.out.println();
 	}
