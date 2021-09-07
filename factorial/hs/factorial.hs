@@ -2,6 +2,11 @@
 factorial :: Integer -> Integer
 factorial n = foldr (*) 1 [1..n]
 
+factorials :: [Integer]
+factorials = drop 1 $ scanl (*) 1 [1..]
+
 main :: IO ()
-main = print $ [factorial n | n <- [1..10]]
+main = do 
+    print $ [factorial n | n <- [1..10]]
+    print $ take 10 factorials
 
