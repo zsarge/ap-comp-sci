@@ -1,21 +1,19 @@
 import java.io.IOException;
 /**
  * class Somersault
- * @author (TJ Evert) 
+ * @author (TJ Evert) (edited by Zack Sargent)
  * @version (2/27/2019)
  */
 public class Somersault {
-  
+
   //clears screen
-  public static void clearScreen() {  
-    try {
-        if (System.getProperty("os.name").contains("Windows"))
-            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-        else
-            Runtime.getRuntime().exec("cls");
-    } catch (IOException | InterruptedException ex) {}
+  public static void clearScreen() throws IOException, InterruptedException {  
+    if (System.getProperty("os.name").contains("Windows"))
+      new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    else
+      Runtime.getRuntime().exec("clear");
   }
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException, InterruptedException {
     try {
       int dt = 50;
       String space;
@@ -23,7 +21,7 @@ public class Somersault {
       while(true) {
         clearScreen();
         space = "";
-          for(int i = 1; i <= 5; i++) {
+        for(int i = 1; i <= 5; i++) {
           Thread.sleep(dt);
           clearScreen();
           System.out.println(space + "\\O/");
@@ -66,7 +64,7 @@ public class Somersault {
           System.out.println(space + "                | ");
           space += "                ";
         }
-          
+
         Thread.sleep(dt);
         clearScreen();
         System.out.println(space + " \\O/");
