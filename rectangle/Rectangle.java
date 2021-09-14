@@ -1,5 +1,9 @@
 import java.util.*;
 
+/*
+ * javac Rectangle.java && java TestRectangle
+ */
+
 public class Rectangle {
 	private double length;
 	private double width;
@@ -43,9 +47,11 @@ public class Rectangle {
 	public double getPerimeter() {
 		return (2 * width) + (2 * length);
 	}
+}
 
+class TestRectangle {
 	public static void main(String args[]) {
-		List<Rectangle> rectangles = new ArrayList<Rectangle>();
+		List<Rectangle> rectangles = new LinkedList<Rectangle>();
 
 		rectangles.add(new Rectangle());
 		rectangles.add(new Rectangle(3, 5));
@@ -54,4 +60,3 @@ public class Rectangle {
 		rectangles.forEach(rectangle -> System.out.println(rectangle));
 	}
 }
-
