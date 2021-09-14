@@ -2,7 +2,7 @@ import java.util.*;
 
 /*
  * use:
- * `javac Person.java  && java Runner`
+ * `javac Person.java && java Runner`
  */
 
 class Person {
