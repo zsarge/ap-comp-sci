@@ -12,17 +12,18 @@ public class Loops {
 		System.out.println("'for' doesn't need statements");
 
 		for (;;) {
-			if (++x > 10) 
+			if (++x > 10) {
 				break;
-			else
+			} else {
 				System.out.println(x);
+			}
 		}
 
 		System.out.println("we don't need braces");
 		x = 0;
 
 		for (;;)
-			if (++x > 10) 
+			if (++x > 10)
 				break;
 			else
 				System.out.println(x);
