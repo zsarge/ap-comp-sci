@@ -1,3 +1,7 @@
+/*
+ * run with "javac College.java && java TestCollege"
+ */
+
 class College {
 	private String name;
 	private int yearFounded;
@@ -27,13 +31,18 @@ class College {
 	public void setYearFounded(int yearFounded) {
 		this.yearFounded = yearFounded;
 	}
+
+	@Override
+	public String toString() {
+		return name + " was founded in " + yearFounded;
+	}
 }
 
 class TestCollege {
 	public static void main(String args[]) {
 		College college = new College("Ohio State University", 1870);
 		college.setName("THE " + college.getName());
-		System.out.println(college.getName());
+		System.out.println(college);
 	}
 }
 
