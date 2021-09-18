@@ -1,4 +1,13 @@
 
+{-
+
+Run with: 
+`runhaskell factorial.hs`
+or 
+`ghc factorial.hs && ./factorial`
+
+-}
+
 factorial :: Integer -> Integer
 factorial n = foldr (*) 1 [1..n]
 
