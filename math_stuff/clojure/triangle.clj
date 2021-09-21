@@ -7,7 +7,7 @@
 
 (defn pyramid [n]
   (->> (range 1 (+ n 1))
-       (map (fn [x] (* x x)))
+       (map #(* % %))
        (reduce +)))
 
 (println "triangle numbers:")
