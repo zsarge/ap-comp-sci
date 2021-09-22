@@ -1,6 +1,11 @@
 
 This was supposed to be an extra credit assignment for AP Computer Science.
-Here, I completed it in a few completely different languages.
+
+I got bored, so I have completed this in many different languages.
+
+I hope I get the extra credit :)
+
+-------
 
 Explanation:
 
