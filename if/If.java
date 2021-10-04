@@ -12,12 +12,16 @@ class If {
 
 		int rand = randInt(1,3);
 
-		if (rand == 1)
-			computerChoice = "rock";
-		else if (rand == 2)
-			computerChoice = "paper";
-		else
-			computerChoice = "scissors";
+		switch (rand) {
+			case 1:
+				computerChoice = "rock";
+				break;
+			case 2:
+				computerChoice = "paper";
+				break;
+			default:
+				computerChoice = "scissors";
+		}
 
 		out.println("You chose " + userChoice);
 		out.println("Computer chose " + computerChoice);
