@@ -3,20 +3,27 @@ import java.util.Scanner;
 
 class If {
 	public static void main(String[] args) {
-
 		Scanner input = new Scanner(System.in);
 
+		String userChoice = "";
+		out.print("Enter your choice (rock, paper, or scissors): ");
+		String userChoice = input.nextLine().toLowerCase();
+		String computerChoice = "";
 
-		out.print("Enter your class rank: ");
-		int classRank = input.nextInt();
-		out.print("Enter your ACT score: ");
-		int act = input.nextInt();
+		int rand = randInt(1,3);
 
-		if (act >= 34)
-			out.println("Welcome to Wassamatta U with honors!");
-		else if (act >= 30 || classRank <= 10)
-			out.println("Welcome to Wassamatta U!");
+		if (rand == 1)
+			computerChoice = "rock";
+		else if (rand == 2)
+			computerChoice = "paper";
 		else
-			out.println("No Wassamatta U for you :(");
+			computerChoice = "scissors";
+
+		out.println("You chose " + userChoice);
+		out.println("Computer chose " + computerChoice);
+	}
+
+	public static int randInt(int min, int max) {
+		return (int) Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 }
