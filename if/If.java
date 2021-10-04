@@ -5,7 +5,6 @@ class If {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
-		String userChoice = "";
 		out.print("Enter your choice (rock, paper, or scissors): ");
 		String userChoice = input.nextLine().toLowerCase();
 		String computerChoice = "";
