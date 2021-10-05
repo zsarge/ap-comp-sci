@@ -1,4 +1,3 @@
-import static java.lang.System.out;
 import java.util.Scanner;
 import java.util.Map;
 import java.util.HashMap;
@@ -13,15 +12,15 @@ class RPS /* Rock Paper Scissors */ {
 
 		testEverything();
 
-		out.println("Your turn:");
-		out.print("Enter your choice (rock, paper, or scissors): ");
+		System.out.println("Your turn:");
+		System.out.print("Enter your choice (rock, paper, or scissors): ");
 		String userChoice = input.nextLine().toLowerCase();
 		String computerChoice = getRandomChoice();
 
-		out.println("Player 1 (you) chose " + userChoice);
-		out.println("Player 2 (computer) chose " + computerChoice);
+		System.out.println("Player 1 (you) chose " + userChoice);
+		System.out.println("Player 2 (computer) chose " + computerChoice);
 
-		out.println("Result: " + whoWon(userChoice, computerChoice));
+		System.out.println("Result: " + whoWon(userChoice, computerChoice));
 	}
 
 	public static String getRandomChoice() {
@@ -44,15 +43,15 @@ class RPS /* Rock Paper Scissors */ {
 			"scissors",
 		};
 
-		out.println("Testing:");
+		System.out.println("Testing:");
 
 		for (String value : values) {
 			for (String value2 : values) {
 				String result = whoWon(value, value2);
-				out.print("Player 1: " +  String.format("%-" + 10 + "s", value));
-				out.print("Player 2: " + String.format("%-" + 10 + "s", value2));
-				out.print("= ");
-				out.println(result);
+				System.out.print("Player 1: " +  String.format("%-" + 10 + "s", value));
+				System.out.print("Player 2: " + String.format("%-" + 10 + "s", value2));
+				System.out.print("= ");
+				System.out.println(result);
 			}
 		}
 	}
