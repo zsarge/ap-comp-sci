@@ -1,8 +1,13 @@
 import static java.lang.System.out;
 import java.util.Scanner;
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
 
-class If {
+/*
+ * run with:
+ * `javac RPS.java && java RPS`
+ */
+class RPS /* Rock Paper Scissors */ {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
@@ -27,31 +32,31 @@ class If {
 		out.println("Computer chose " + computerChoice);
 
 		out.println("Result: " + whoWon(userChoice, computerChoice));
+	}
 
+	public static void testEverything() {
 		String[] values = {
 			"rock",
 			"paper",
 			"scissors",
 		};
 
+		out.println("Testing:");
+
 		for (String value : values) {
 			for (String value2 : values) {
-				// out.println(whoWon(value, value2));
 				String result = whoWon(value, value2);
-				if (!value.equals(value2))
-					out.println(result.equals("You won!") ? (value + " beats " + value2) : (value2 + " beats " + value));
+				out.print("Player 1: " +  String.format("%-" + 10 + "s", value));
+				out.print("Player 2: " + String.format("%-" + 10 + "s", value2));
+				out.print("= ");
+				out.println(result);
 			}
 		}
 	}
-
 	/*
 	 * PRE-CONDITION: p1, p2 - "rock", "paper", or "scissors"
 	 */
 	public static String whoWon(String p1, String p2) {
-		// input correction
-		p1 = p1.toLowerCase();
-		p2 = p2.toLowerCase();
-
 		// transform strings to ints
 		Map<String, Integer> transform = new HashMap<String, Integer>();
 		transform.put("rock", 0);
@@ -74,8 +79,7 @@ class If {
 			case -1:
 			case 2:
 				return "Player 2 wins";
-				// satisfy the compiler
-			default:
+			default: // satisfy the compiler
 				return "";
 		}
 	}
