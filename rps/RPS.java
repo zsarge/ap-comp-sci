@@ -11,27 +11,30 @@ class RPS /* Rock Paper Scissors */ {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
+		testEverything();
+
+		out.println("Your turn:");
 		out.print("Enter your choice (rock, paper, or scissors): ");
 		String userChoice = input.nextLine().toLowerCase();
-		String computerChoice = "";
+		String computerChoice = getRandomChoice();
 
+		out.println("Player 1 (you) chose " + userChoice);
+		out.println("Player 2 (computer) chose " + computerChoice);
+
+		out.println("Result: " + whoWon(userChoice, computerChoice));
+	}
+
+	public static String getRandomChoice() {
 		int rand = randInt(1,3);
 
 		switch (rand) {
 			case 1:
-				computerChoice = "rock";
-				break;
+				return "rock";
 			case 2:
-				computerChoice = "paper";
-				break;
+				return "paper";
 			default:
-				computerChoice = "scissors";
+				return "scissors";
 		}
-
-		out.println("You chose " + userChoice);
-		out.println("Computer chose " + computerChoice);
-
-		out.println("Result: " + whoWon(userChoice, computerChoice));
 	}
 
 	public static void testEverything() {
