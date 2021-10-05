@@ -64,7 +64,7 @@ class RPS /* Rock Paper Scissors */ {
 		transform.put("scissors", 2);
 
 		// return early if there was an invalid input.
-		if (!transform.keySet().contains(p1) || !transform.keySet().contains(p1)) {
+		if (!transform.keySet().contains(p1) || !transform.keySet().contains(p2)) {
 			return "I'm afraid I can't help you";
 		}
 
