@@ -47,11 +47,10 @@ class RPS /* Rock Paper Scissors */ {
 
 		for (String value : values) {
 			for (String value2 : values) {
-				String result = whoWon(value, value2);
 				System.out.print("Player 1: " +  String.format("%-" + 10 + "s", value));
 				System.out.print("Player 2: " + String.format("%-" + 10 + "s", value2));
 				System.out.print("= ");
-				System.out.println(result);
+				System.out.println(whoWon(value, value2));
 			}
 		}
 	}
