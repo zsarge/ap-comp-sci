@@ -14,13 +14,13 @@ class RPSGame /* Rock Paper Scissors */ {
 
 		System.out.println("Your turn:");
 		System.out.print("Enter your choice (rock, paper, or scissors): ");
-		String userChoice = input.nextLine().toLowerCase();
+		String userChoice = input.nextLine().toLowerCase().trim();
 		String computerChoice = getRandomChoice();
 
 		System.out.println("Player 1 (you) chose " + userChoice);
 		System.out.println("Player 2 (computer) chose " + computerChoice);
 
-		System.out.println("Result: " + whoWon(userChoice, computerChoice));
+		System.out.println("Result: " + rps(userChoice, computerChoice));
 	}
 
 	public static String getRandomChoice() {
@@ -50,14 +50,14 @@ class RPSGame /* Rock Paper Scissors */ {
 				System.out.print("Player 1: " +  String.format("%-" + 10 + "s", value));
 				System.out.print("Player 2: " + String.format("%-" + 10 + "s", value2));
 				System.out.print("= ");
-				System.out.println(whoWon(value, value2));
+				System.out.println(rps(value, value2));
 			}
 		}
 	}
 	/*
 	 * PRE-CONDITION: p1, p2 - "rock", "paper", or "scissors"
 	 */
-	public static String whoWon(String p1, String p2) {
+	public static String rps(String p1, String p2) {
 		// transform strings to ints
 		Map<String, Integer> transform = new HashMap<String, Integer>();
 		transform.put("rock", 0);
