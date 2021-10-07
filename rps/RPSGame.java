@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 /*
  * run with:
- * `javac RPS.java && java RPS`
+ * `javac RPSGame.java && java RPSGame`
  */
-class RPS /* Rock Paper Scissors */ {
+class RPSGame /* Rock Paper Scissors */ {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
