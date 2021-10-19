@@ -1,10 +1,15 @@
+import java.util.*;
 class Loops {
 	public static void main(String[] args) {
-		for (int i = 4; i > 0; i--) {
-			for (int j = 0; j < i; j++) {
-				System.out.print("* ");
-			}
-			System.out.println();
+		Scanner scanner = new Scanner(System.in);
+		// System.out.println("please enter the password!");
+
+		String s = "y";
+		while (s.equals("y")) {
+			System.out.println("...game is played...\nGood Game! Would you like to play again? [y/n]");
+			s = scanner.nextLine();
 		}
+		
+		System.out.println("Welcome to the matrix!");
 	}
 }
