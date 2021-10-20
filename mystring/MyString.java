@@ -21,6 +21,11 @@ class MyString {
 		test(test1.replace("", ""), replace(test1, "", ""));
 		test(test1.replace("World", ""), replace(test1, "World", ""));
 		test(test1.replace(" ", "_"), replace(test1, " ", "_"));
+		test('a', lowerChar('A'));
+		test('z', lowerChar('Z'));
+		test("abcdefg", toLowerCase("abcdefg"));
+		test(test1.toLowerCase(), toLowerCase(test1));
+		test("".toLowerCase(), toLowerCase(""));
 	}
 	public static String substring(String str, int start) {
 		StringBuilder sb = new StringBuilder();
@@ -51,7 +56,7 @@ class MyString {
 			for (int j = 0; j < searchString.length(); j++) {
 				if (str.charAt(j + i) == searchString.charAt(j))
 					matchTimes++;
-				else 
+				else
 					break;
 			}
 			if (matchTimes == searchString.length())
@@ -81,6 +86,18 @@ class MyString {
 		sb.append(base.substring(start));
 		return replace(sb.toString(), find, replacer);
 	}
+	public static String toLowerCase(String str) {
+		StringBuilder sb = new StringBuilder();
+		for (char c : str.toCharArray())
+			sb.append(lowerChar(c));
+		return sb.toString();
+	}
+	private static char lowerChar(char c) {
+		if ((int) c >= 'A' && (int) c <= 'Z')
+			return (char) ((int) c + 32);
+		else
+			return c;
+	}
 	/* ---------------- */
 	public static void test(String a, String b) {
 		System.out.print(a + " == " + b + ": ");
@@ -97,13 +114,12 @@ class MyString {
 }
 
 /*
- *
- *           replace
- *             toLowerCase
  * Done:
+ *             toLowerCase
  *         length
  *       indexOf
  * substring
  *   compareTo
  *     charAt
+ *           replace
  * */
