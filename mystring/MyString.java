@@ -41,9 +41,8 @@ class MyString {
 	}
 	public static int compareTo(String str, String other) {
 		int offset = 0;
-		while (str.charAt(offset) == other.charAt(offset)) {
+		while (str.charAt(offset) == other.charAt(offset))
 			offset++;
-		}
 		return str.charAt(offset) - other.charAt(offset);
 	}
 	public static char charAt(String str, int index) {
@@ -65,9 +64,8 @@ class MyString {
 		return -1;
 	}
 	public static int length(String str) {
-		char[] chars = str.toCharArray();
 		int len = 0;
-		for (char c : chars)
+		for (char c : str.toCharArray())
 			len++;
 		return len;
 	}
