@@ -112,14 +112,3 @@ class MyString {
 		System.out.println(a == b);
 	}
 }
-
-/*
- * Done:
- *             toLowerCase
- *         length
- *       indexOf
- * substring
- *   compareTo
- *     charAt
- *           replace
- * */
