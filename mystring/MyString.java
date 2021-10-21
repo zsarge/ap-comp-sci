@@ -26,6 +26,8 @@ class MyString {
 		test("abcdefg", toLowerCase("abcdefg"));
 		test(test1.toLowerCase(), toLowerCase(test1));
 		test("".toLowerCase(), toLowerCase(""));
+		test(test1.contains("World"), contains(test1, "World"));
+		test(test1.contains("oorld"), contains(test1, "oorld"));
 	}
 	public static String substring(String str, int start) {
 		StringBuilder sb = new StringBuilder();
@@ -48,6 +50,9 @@ class MyString {
 	public static char charAt(String str, int index) {
 		char[] chars = str.toCharArray();
 		return chars[index];
+	}
+	public static boolean contains(String str, String searchString) {
+		return indexOf(str, searchString) != -1;
 	}
 	public static int indexOf(String str, String searchString) {
 		for (int i = 0; i < str.length() - searchString.length(); i++) {
@@ -102,6 +107,10 @@ class MyString {
 		System.out.println(a.equals(b));
 	}
 	public static void test(int a, int b) {
+		System.out.print(a + " == " + b + ": ");
+		System.out.println(a == b);
+	}
+	public static void test(boolean a, boolean b) {
 		System.out.print(a + " == " + b + ": ");
 		System.out.println(a == b);
 	}
