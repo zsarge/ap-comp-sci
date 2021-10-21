@@ -17,14 +17,31 @@ public class RecursiveGraphics extends Canvas {
     frame.setVisible(true);    
   }
   public void paint(Graphics g) {
-    drawPlusPlus(200, 200, 100, 10, g);
+    drawBoxBox(200, 200, 20, 5, g);
+  }
+  public static void drawBox(int x, int y, int r, Graphics g) {
+      g.drawLine(x + r, y + r, x + r, y - r);
+      g.drawLine(x + r, y + r, x - r, y + r);
+      g.drawLine(x - r, y + r, x - r, y - r);
+      g.drawLine(x - r, y - r, x + r, y - r);
+  }
+  public static void drawBoxBox(int x, int y, int r, int n, Graphics g) {
+    if (n == 0) {
+      drawBox(x, y, r, g);
+    } else {
+      drawBoxBox(x,     y,     r, n - 1, g);
+      drawBoxBox(x + r, y + r, r, n - 1, g);
+      drawBoxBox(x - r, y + r, r, n - 1, g);
+      drawBoxBox(x + r, y - r, r, n - 1, g);
+      drawBoxBox(x - r, y - r, r, n - 1, g);
+    }
   }
   public static void drawPlusPlus(int x, int y, int r, int n, Graphics g) {
     if (n == 0) {
       g.drawLine(x - r, y, x + r, y);
       g.drawLine(x, y - r, x, y + r);
     } else {
-      drawPlusPlus(x, y, r, n - 1, g);
+      drawPlusPlus(x, y,     r,     n - 1, g);
       drawPlusPlus(x, y - r, r / 2, n - 1, g);
       drawPlusPlus(x, y + r, r / 2, n - 1, g);
       drawPlusPlus(x - r, y, r / 2, n - 1, g);
