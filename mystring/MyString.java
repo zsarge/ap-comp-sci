@@ -23,15 +23,18 @@ class MyString {
 		test(test1.replace(" ", "_"), replace(test1, " ", "_"));
 		test('a', lowerChar('A'));
 		test('z', lowerChar('Z'));
-		test("abcdefg", toLowerCase("abcdefg"));
-		test(test1.toLowerCase(), toLowerCase(test1));
-		test("".toLowerCase(), toLowerCase(""));
 		test(test1.contains("World"), contains(test1, "World"));
 		test(test1.contains("oorld"), contains(test1, "oorld"));
 		test(test1.equals("Hello World!"), equals(test1, "Hello World!"));
 		test(test1.equals("Hello wwWorld!"), equals(test1, "Hello wwWorld!"));
 		test(test1.concat(test2), concat(test1, test2));
 		test(test1.concat("alksjd"), concat(test1, "alksjd"));
+		test(test1.toLowerCase(), toLowerCase(test1));
+		test(test2.toLowerCase(), toLowerCase(test2));
+		test("".toLowerCase(), toLowerCase(""));
+		test("".toUpperCase(), toUpperCase(""));
+		test(test1.toUpperCase(), toUpperCase(test1));
+		test(test2.toUpperCase(), toUpperCase(test2));
 	}
 	public static String substring(String str, int start) {
 		StringBuilder sb = new StringBuilder();
@@ -108,6 +111,18 @@ class MyString {
 		for (char c : str.toCharArray())
 			sb.append(lowerChar(c));
 		return sb.toString();
+	}
+	public static String toUpperCase(String str) {
+		StringBuilder sb = new StringBuilder();
+		for (char c : str.toCharArray())
+			sb.append(upperChar(c));
+		return sb.toString();
+	}
+	private static char upperChar(char c) {
+		if ((int) c >= 'a' && (int) c <= 'z')
+			return (char) ((int) c - 32);
+		else
+			return c;
 	}
 	private static char lowerChar(char c) {
 		if ((int) c >= 'A' && (int) c <= 'Z')
