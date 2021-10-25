@@ -28,6 +28,10 @@ class MyString {
 		test("".toLowerCase(), toLowerCase(""));
 		test(test1.contains("World"), contains(test1, "World"));
 		test(test1.contains("oorld"), contains(test1, "oorld"));
+		test(test1.equals("Hello World!"), equals(test1, "Hello World!"));
+		test(test1.equals("Hello wwWorld!"), equals(test1, "Hello wwWorld!"));
+		test(test1.concat(test2), concat(test1, test2));
+		test(test1.concat("alksjd"), concat(test1, "alksjd"));
 	}
 	public static String substring(String str, int start) {
 		StringBuilder sb = new StringBuilder();
@@ -50,6 +54,18 @@ class MyString {
 	public static char charAt(String str, int index) {
 		char[] chars = str.toCharArray();
 		return chars[index];
+	}
+	public static String concat(String str1, String str2) {
+		// no string methods used
+		return str1 + str2;
+	}
+	public static boolean equals(String str1, String str2) {
+		if (str1.length() != str2.length())
+			return false;
+		for (int i = 0; i < str1.length(); i++)
+			if (str1.charAt(i) != str2.charAt(i))
+				return false;
+		return true;
 	}
 	public static boolean contains(String str, String searchString) {
 		return indexOf(str, searchString) != -1;
