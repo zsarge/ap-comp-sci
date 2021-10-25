@@ -83,9 +83,7 @@ class MyString {
 		StringBuilder sb = new StringBuilder();
 		sb.append(base.substring(0, index));
 		sb.append(replacer);
-		int endOfReplaceStr = find.length() + index ;
-		int start = endOfReplaceStr > base.length()
-			? base.length() : endOfReplaceStr;
+		int start = find.length() + index;
 		sb.append(base.substring(start));
 		return replace(sb.toString(), find, replacer);
 	}
