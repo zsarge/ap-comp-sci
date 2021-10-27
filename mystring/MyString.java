@@ -14,6 +14,7 @@ class MyString {
 		test(test1.indexOf("ello"), indexOf(test1, "ello"));
 		test(test1.indexOf("wllo"), indexOf(test1, "wllo"));
 		test(test1.indexOf("orld"), indexOf(test1, "orld"));
+		test(test1.indexOf(""), indexOf(test1, ""));
 		test(test1.length(), length(test1));
 		test("".length(), length(""));
 		test(test1.replace("l", "w"), replace(test1, "l", "w"));
