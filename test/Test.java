@@ -1,7 +1,28 @@
 class Test {
 	public static void main(String[] args) {
 		for (int i = 0; i < 10; i++)
-			System.out.println(makeI(i));
+			System.out.println(nthPrime(i));
+	}
+	public static int nthPrime(int n) {
+		int count = 0;
+		int num = 2;
+		while (count < n) {
+			num++;
+			if (isPrimeOptimized(num))
+				count++;
+		}
+		return num;
+	}
+	public static boolean isPrimeOptimized(int n) {
+		if (n % 2 == 0 && n != 2 && n != 0)
+			return false;
+		for (int i = 2; i <= Math.sqrt(n); i++) {
+			if (n % i == 0)
+				return false;
+			// if (n % (i * i) == 0)
+				// return false;
+		}
+		return true;
 	}
 	public static String makeI(int n) {
 		if (n <= 0)
