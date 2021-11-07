@@ -58,13 +58,13 @@ class Fraction {
 	}
 
 	public Fraction plus(Fraction other) {
-		int n = this.numerator * other.denominator + this.denominator + other.numerator;
+		int n = this.numerator * other.denominator + this.denominator * other.numerator;
 		int d = this.denominator * other.denominator;
 		return new Fraction(n, d).toSimplified();
 	}
 
 	public Fraction minus(Fraction other) {
-		int n = this.numerator * other.denominator - this.denominator + other.numerator;
+		int n = this.numerator * other.denominator - this.denominator * other.numerator;
 		int d = this.denominator * other.denominator;
 		return new Fraction(n, d).toSimplified();
 	}
