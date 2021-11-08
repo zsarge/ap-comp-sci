@@ -1,7 +1,42 @@
+import java.util.*;
+
 class Test {
 	public static void main(String[] args) {
-		for (int i = 0; i < 10; i++)
-			System.out.println(nthPrime(i));
+		String[] values = new String[] {"rock", "paper", "scissors", "lak"};
+		for (String a : values) {
+			for (String b : values) {
+				System.out.print(rps(a, b));
+				System.out.println("\t - " + a + "\t" + b + ":\t");
+			}
+		}
+	}
+	public static String rps(String p1, String p2) {
+		// transform strings to ints
+		Map<String, Integer> transform = new HashMap<String, Integer>();
+		transform.put("rock", 0);
+		transform.put("paper", 1);
+		transform.put("scissors", 2);
+
+		// return early if there was an invalid input.
+		if (!transform.keySet().contains(p1))
+			return "Player 1 Invalid Input";
+		else if (!transform.keySet().contains(p2))
+			return "Player 2 Invalid Input";
+
+		int result = transform.get(p1) - transform.get(p2);
+
+		switch (result) {
+			case 0:
+				return "tie";
+			case 1:
+			case -2:
+				return "Player 1 wins";
+			case -1:
+			case 2:
+				return "Player 2 wins";
+			default: // satisfy the compiler
+				return "";
+		}
 	}
 	public static int nthPrime(int n) {
 		int count = 0;
@@ -19,8 +54,6 @@ class Test {
 		for (int i = 2; i <= Math.sqrt(n); i++) {
 			if (n % i == 0)
 				return false;
-			// if (n % (i * i) == 0)
-				// return false;
 		}
 		return true;
 	}
@@ -51,7 +84,7 @@ class Test {
 		for (int i = 1; i < width - 1; i++)
 			tile[i][width / 2] = 'I';
 
-		// join 
+		// join
 		StringBuilder sb = new StringBuilder();
 		for (char[] row : tile) {
 			for (char c : row)
