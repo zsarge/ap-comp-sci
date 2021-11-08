@@ -36,6 +36,7 @@ class MyString {
 		test("".toUpperCase(), toUpperCase(""));
 		test(test1.toUpperCase(), toUpperCase(test1));
 		test(test2.toUpperCase(), toUpperCase(test2));
+		test(test1.indexOf("World!"), indexOf(test1, "World!"));
 	}
 	public static String substring(String str, int start) {
 		StringBuilder sb = new StringBuilder();
@@ -75,7 +76,7 @@ class MyString {
 		return indexOf(str, searchString) != -1;
 	}
 	public static int indexOf(String str, String searchString) {
-		for (int i = 0; i < str.length() - searchString.length(); i++) {
+		for (int i = 0; i <= str.length() - searchString.length(); i++) {
 			int matchTimes = 0;
 			for (int j = 0; j < searchString.length(); j++) {
 				if (str.charAt(j + i) == searchString.charAt(j))
