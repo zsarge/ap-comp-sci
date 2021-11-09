@@ -4,6 +4,25 @@ class Complex {
 		a = x;
 		b = y;
 	}
+	public void setComplex(Complex other) {
+		this.a = other.a;
+		this.b = other.b;
+	}
+	public double getR() {
+		return Math.sqrt(a*a  + b*b);
+	}
+	public void setRe(double re) {
+		a = re;
+	}
+	public void setIm(double im)  {
+		b = im;
+	}
+	public double re() {
+		return a;
+	}
+	public double im() {
+		return b;
+	}
 	public String toString() {
 		return a + " + " + b + "i";
 	}
