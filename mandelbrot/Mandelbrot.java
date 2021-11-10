@@ -7,46 +7,42 @@ public class Mandelbrot extends Canvas {
   final static int WIDTH  = 600;
   final static int HEIGHT = 600;
   final static Color BACKGROUD_GRAY = new Color(238, 238, 238);
-  
+
   public static void main(String[] args) {
     JFrame frame = new JFrame("A Simple Example of Graphics");
     Canvas canvas = new Mandelbrot();
     canvas.setSize(WIDTH, HEIGHT);
     frame.add(canvas);
     frame.pack();
-    frame.setVisible(true);    
+    frame.setVisible(true);
   }
-  
+
   public static void drawPixel(int x, int y, Graphics g) {
     g.drawLine(x, y, x, y);
-  }  
-  public static void randomWalk(int i, int j, int n, Graphics g) {
-    for (int k = 0; k < n; k++) {
-      drawPixel(i, j, g);
-      i += randInt(-1, 1);
-      j += randInt(-1, 1);
-    }
-  }  
+  }
+
   public static void drawMandelbrot(Graphics g) {
-    double inc = 0.01;
-    for (double i = -3.0; i <= 3.0; i+= inc) {
-      for (double j = -3.0; j <= 3.0; j += inc) {
+    final double inc = 0.001;
+    for (double i = -2.0; i <= 2.0; i+= inc) {
+      for (double j = -2.0; j <= 2.0; j += inc) {
         Complex c = new Complex(i, j);
         if (benoit(c))
           drawComplex(c, g);
       }
     }
   }
+
   public static boolean benoit(Complex c) {
-    Complex z = new Complex(0.0, 0.0);
-    int count = 0;
-    double magicNumber = 6;
-    while (z.getR() < magicNumber && count < 20) {
-      z.setComplex(z.times(z).plus(c));
-      count++;
-    }
-    return z.getR() < magicNumber;
+	Complex z = new Complex(0.0, 0.0);
+	int count = 0;
+	double magicNumber = 3.0;
+	while (z.getR() < magicNumber && count < 20) {
+	  z.setComplex(z.times(z).plus(c));
+	  count++;
+	}
+	return z.getR() < magicNumber;
   }
+
   public void paint(Graphics g) {
     drawMandelbrot(g);
     // for (double z = -3.0; z <= 3.0; z+= 0.01) {
@@ -55,8 +51,13 @@ public class Mandelbrot extends Canvas {
     // }
   }
   public static void drawComplex(Complex z, Graphics g) {
-    int x = (int) (100*z.re()) + 300;
-    int y = (int) (-100*z.im()) + 300;
+	final int scalar = 800;
+	int x = (int) Math.round(scalar*z.re()) + 200;
+	int y = (int) Math.round(-scalar*z.im()) + 500;
+	// final int scalar = 200;
+	// final int offset = 250;
+    // int x = (int) (scalar*z.re()) + offset;
+    // int y = (int) (-scalar*z.im()) + offset;
     drawPixel(x, y, g);
   }
   public static int randInt(int min, int max) {
