@@ -4,7 +4,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 
 public class Logistic extends Canvas {
-  final static int WIDTH = 1200;
+  final static int WIDTH = 600;
   final static int HEIGHT = 600;
   final static Color WHITE = new Color(255, 255, 255);
   
@@ -29,12 +29,12 @@ public class Logistic extends Canvas {
     double x = 2 / 3.0;
     for(double A = 1.0; A <= 4.0; A += 0.001) {
       // x = 1 - (1.0 / A);
-      for(int i = 0; i < 100; i++) {
+      for(int i = 0; i < 200; i++) {
         x = A*x*(1 - x);
       }
       for(int i = 0; i < 20; i++) {
         x = A*x*(1 - x);
-        drawPixel( (int)(600*A) - 1200, (int)(600* (1-x)), g);
+        drawPixel( (int)(600*A) - 1800, (int)(700* (1-x)), g);
       }
     }
   }

@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import java.awt.Color;
 
 public class Mandelbrot extends Canvas {
-  final static int WIDTH  = 600;
+  final static int WIDTH  = 1200;
   final static int HEIGHT = 600;
   final static Color BACKGROUD_GRAY = new Color(238, 238, 238);
 
@@ -51,18 +51,13 @@ public class Mandelbrot extends Canvas {
     // }
   }
   public static void drawComplex(Complex z, Graphics g) {
-	final int scalar = 800;
-	int x = (int) Math.round(scalar*z.re()) + 200;
-	int y = (int) Math.round(-scalar*z.im()) + 500;
-	// final int scalar = 200;
-	// final int offset = 250;
-    // int x = (int) (scalar*z.re()) + offset;
-    // int y = (int) (-scalar*z.im()) + offset;
+	final int scalar = 300;
+	int x = (int) Math.round(scalar*z.re()) + WIDTH / 2;
+	int y = (int) Math.round(-scalar*z.im()) + HEIGHT / 2;
     drawPixel(x, y, g);
   }
   public static int randInt(int min, int max) {
     return (int)Math.floor( Math.random() * (max - min + 1) ) + min;
   }
 }
-
 
