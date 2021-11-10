@@ -35,7 +35,7 @@ class Complex {
 	public Complex times(Complex other) {
 		return new Complex(
 			(this.a * other.a) - (this.b * other.b),
-			(this.a * other.a) + (this.b * other.b)
+			(this.a * other.b) + (this.a * other.b)
 		);
 	}
 	public Complex scale(double n) {
