@@ -1,8 +1,11 @@
+import java.util.Scanner;
+
 class Elevator {
 
   private boolean goingUp, doorOpen;
   private int currentFloor;
   private boolean[] pickIn, pickOutUp, pickOutDown;
+  Scanner input;
 
   //PRE-CONDITION: numberOfFloors > 0
   public Elevator(int numberOfFloors) {
@@ -12,6 +15,8 @@ class Elevator {
     pickIn = new boolean[numberOfFloors];
     pickOutUp = new boolean[numberOfFloors];
     pickOutDown = new boolean[numberOfFloors];
+
+    input = new Scanner(System.in);
   }
 
   public void pickIn(int floor) {
@@ -19,7 +24,7 @@ class Elevator {
       pickIn[floor] = true;
     }
     else {
-      System.out.println("Floor piched is not available.");
+      System.out.println("Floor picked is not available.");
     }
   }
 
@@ -45,6 +50,60 @@ class Elevator {
     return state ? '*' : 'o';
   }
 
+  public int nearestUpPicked() {
+    for (int i = currentFloor + 1; i < pickIn.length; i++)
+      if (pickOutUp[i] || pickOutDown[i] || pickIn[i])
+        return i;
+    return currentFloor;
+  }
+
+  public int nearestDownPicked() {
+    for (int i = currentFloor - 1; i >= 0; i--)
+      if (pickOutUp[i] || pickOutDown[i] || pickIn[i])
+        return i;
+    return currentFloor;
+  }
+
+  public int nextFloorPicked() {
+    int output = currentFloor;
+    if (goingUp) {
+      output = nearestUpPicked();
+      if (output == currentFloor) {
+        return nearestDownPicked();
+      }
+    } else {
+      output = nearestDownPicked();
+      if (output == currentFloor) {
+        return nearestUpPicked();
+      }
+    }
+    return output;
+  }
+
+  public void promptUser() {
+    System.out.println("Please enter all floors going up: (enter to end)");
+    String choice = input.nextLine();
+    while (!choice.equals("")) {
+      pickOutUp(Integer.valueOf(choice));
+      choice = input.nextLine();
+    }
+
+    System.out.println("Please enter all floors going down: (enter to end)");
+    choice = input.nextLine();
+    while (!choice.equals("")) {
+      pickOutDown(Integer.valueOf(choice));
+      choice = input.nextLine();
+    }
+
+    System.out.println("Please enter all floors chosen on the inside: (enter to end)");
+    choice = input.nextLine();
+    while (!choice.equals("")) {
+      pickIn(Integer.valueOf(choice));
+      choice = input.nextLine();
+    }
+  }
+
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -52,7 +111,7 @@ class Elevator {
     sb.append("current floor = " + currentFloor + "\n");
     sb.append("=================\n");
     sb.append("Going " + (goingUp ? "up" : "down") + " \n");
-    sb.append("[Door is " + (doorOpen ? "open" : "closed") + " ]\n");
+    sb.append("[Door is " + (doorOpen ? "open" : "closed") + "]\n");
 
     sb.append("Floor\tPI\tPOU\tPOD\n");
     for (int i = pickIn.length - 1; i >= 0; i--) {
@@ -67,18 +126,19 @@ class Elevator {
 
   public static void main(String[] arg) {
     Elevator e = new Elevator(10);
-    e.pickIn(0);
-    e.pickOutUp(0);
-    e.pickOutDown(0);
-    e.pickIn(2);
-    e.pickOutUp(3);
-    e.pickOutDown(4);
-    e.pickIn(5);
-    e.pickOutUp(6);
-    e.pickOutDown(7);
-    e.pickIn(9);
-    e.pickOutUp(9);
-    e.pickOutDown(9);
+    e.promptUser();
+    // e.pickIn(0);
+    // e.pickOutUp(0);
+    // e.pickOutDown(0);
+    // e.pickIn(2);
+    // e.pickOutUp(3);
+    // e.pickOutDown(4);
+    // e.pickIn(5);
+    // e.pickOutUp(6);
+    // e.pickOutDown(7);
+    // e.pickIn(9);
+    // e.pickOutUp(9);
+    // e.pickOutDown(9);
     System.out.println(e);
   }
 }
