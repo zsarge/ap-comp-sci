@@ -108,20 +108,60 @@ class Elevator {
   public String toString() {
     StringBuilder sb = new StringBuilder();
 
-    sb.append("current floor = " + currentFloor + "\n");
-    sb.append("=================\n");
-    sb.append("Going " + (goingUp ? "up" : "down") + " \n");
-    sb.append("[Door is " + (doorOpen ? "open" : "closed") + "]\n");
+    sb.append("\n            \tPicked  0  1  2  3  4  5  6  7  8  9\n");
+    sb.append("Floor = " + currentFloor + "\tINSIDE  ");
 
-    sb.append("Floor\tPI\tPOU\tPOD\n");
-    for (int i = pickIn.length - 1; i >= 0; i--) {
-      sb.append(i + "\t");
-      sb.append(formatBool(pickIn[i]) + "\t");
-      sb.append(formatBool(pickOutUp[i]) + "\t");
-      sb.append(formatBool(pickOutDown[i]) + "\n");
-    }
+    // INSIDE
+    for (boolean floor : pickIn)
+      sb.append(formatBool(floor) + "  ");
+
+    sb.append("\nGoing ");
+    if (goingUp)
+      sb.append("UP");
+    else
+      sb.append("DOWN");
+    sb.append(" \tHALL UP ");
+
+    // HALL UP
+    for (boolean floor : pickOutUp)
+      sb.append(formatBool(floor) + "  ");
+
+    sb.append("\nDoors ");
+    if (doorOpen)
+      sb.append("OPEN");
+    else
+      sb.append("CLOSED");
+    sb.append("  \tHALL DN ");
+
+    // HALL UP
+    for (boolean floor : pickOutDown)
+      sb.append(formatBool(floor) + "  ");
+    sb.append("\n\n");
 
     return sb.toString();
+  }
+
+  public void run() {
+    int next = nextFloorPicked();
+
+    doorOpen = false;
+    while (currentFloor != next) {
+      System.out.println("current floor = " + currentFloor + " | next " + next);
+      if (currentFloor < next)
+        currentFloor++;
+      else
+        currentFloor--;
+    }
+    pickIn[currentFloor] = false;
+    doorOpen = true;
+
+    System.out.println(this);
+    delay(2000);
+  }
+
+  public static void delay(long milliSeconds) {
+    long future = System.nanoTime() + milliSeconds * 1000000;
+    while(future > System.nanoTime()) {}
   }
 
   public static void main(String[] arg) {
@@ -139,6 +179,9 @@ class Elevator {
     // e.pickIn(9);
     // e.pickOutUp(9);
     // e.pickOutDown(9);
-    System.out.println(e);
+    // System.out.println(e);
+    for (int i = 0; i < 10; i++)
+      e.run();
+    // System.out.println(e);
   }
 }
